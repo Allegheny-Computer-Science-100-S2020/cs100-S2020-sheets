@@ -1,0 +1,498 @@
+\documentclass[11pt]{article}
+
+% NOTE: The "Edit" sections are changed for each assignment
+
+% Edit these commands for each assignment
+
+\newcommand{\assignmentduedate}{September 2}
+\newcommand{\assignmentassignedate}{August 30}
+\newcommand{\assignmentnumber}{One}
+
+\newcommand{\labyear}{2019}
+\newcommand{\labdueday}{Monday}
+\newcommand{\labassignday}{Friday}
+\newcommand{\labtime}{9:00 am}
+
+\newcommand{\assigneddate}{Assigned: \labassignday, \assignmentassignedate, \labyear{} at \labtime{}}
+\newcommand{\duedate}{Due: \labdueday, \assignmentduedate, \labyear{} at \labtime{}}
+
+% Commands to describe key development tasks
+
+% --> Running gatorgrader.sh
+\newcommand{\gatorgraderstart}{\command{gradle grade}}
+\newcommand{\gatorgradercheck}{\command{gradle grade}}
+
+% --> Compiling and running and testing program with gradle
+\newcommand{\gradlebuild}{\command{gradle build}}
+\newcommand{\gradletest}{\command{gradle test}}
+\newcommand{\gradlerun}{\command{gradle run}}
+
+% Commands to describe key git tasks
+
+% NOTE: Could be improved, problems due to nesting
+
+\newcommand{\gitcommitfile}[1]{\command{git commit #1}}
+\newcommand{\gitaddfile}[1]{\command{git add #1}}
+
+\newcommand{\gitadd}{\command{git add}}
+\newcommand{\gitcommit}{\command{git commit}}
+\newcommand{\gitpush}{\command{git push}}
+\newcommand{\gitpull}{\command{git pull}}
+
+\newcommand{\gitcommitmainprogram}{\command{git commit src/main/java/practicalone/Swap.java -m "Your
+descriptive commit message"}}
+
+% Use this when displaying a new command
+
+\newcommand{\command}[1]{``\lstinline{#1}''}
+\newcommand{\program}[1]{\lstinline{#1}}
+\newcommand{\url}[1]{\lstinline{#1}}
+\newcommand{\channel}[1]{\lstinline{#1}}
+\newcommand{\option}[1]{``{#1}''}
+\newcommand{\step}[1]{``{#1}''}
+
+\usepackage{pifont}
+\newcommand{\checkmark}{\ding{51}}
+\newcommand{\naughtmark}{\ding{55}}
+
+\usepackage{listings}
+\lstset{
+  basicstyle=\small\ttfamily,
+  columns=flexible,
+  breaklines=true
+}
+
+\usepackage{fancyhdr}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{Computer Science 100}
+\lhead{Practical Assignment \assignmentnumber{}}
+\rfoot{Page \thepage}
+\lfoot{\duedate}
+
+\usepackage{titlesec}
+\titlespacing\section{0pt}{6pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+
+\newcommand{\labtitle}[1]
+{
+  \begin{center}
+    \begin{center}
+      \bf
+      CMPSC 100\\Computational Expression\\
+      Fall 2019\\
+      \medskip
+    \end{center}
+    \bf
+    #1
+  \end{center}
+}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\labtitle{Practical \assignmentnumber{} \\ \assigneddate{} \\ \duedate{}}
+
+% Slack for this course:
+
+% https://join.slack.com/t/cs100fall2019/signup
+
+\section*{Objectives}
+
+To learn how to install and use a contained-based platform, called Docker, to
+support the completion of technical activities (e.g., building and running a
+Java program) during the class, laboratory, and practical sessions. In addition
+to learning how to install and use a text editor such as Atom or VS Code,
+students will also learn how to install a package manager such as Brew or
+Chocolatey. After you install a package manager, you will use it to further
+install programs like a terminal window and the Git command-line client. As
+necessary, students may optionally configure their laptop's connection to a
+GitHub account --- although a later assignment will also explain the steps
+needed to complete this task. Throughout this assignment, students will also
+learn how to use Slack to support communication with each other, the student
+technical leaders, and the instructor.
+
+\section*{Suggestions for Success}
+
+\begin{itemize}
+  \setlength{\itemsep}{0pt}
+
+\item {\bf Follow each step carefully}. Slowly read each sentence in the
+  assignment sheet, making sure that you precisely follow each instruction. Take
+  notes about each step that you attempt, recording your questions and ideas and
+  the challenges that you faced. If you are stuck, then please tell a technical
+  leader or instructor what assignment step you recently completed.
+
+\item {\bf Regularly ask and answer questions}. Please log into Slack at the
+  start of a laboratory or practical session and then join the appropriate
+  channel. If you have a question about one of the steps in an assignment, then
+  you can post it to the designated channel. Or, you can ask a student sitting
+  next to you or talk with a technical leader or the course instructor.
+
+% \item {\bf Store your files in GitHub}. Starting with this practical assignment,
+%   you will be responsible for storing all of your files (e.g., Java source code
+%   and Markdown-based writing) in a Git repository using GitHub Classroom. Please
+%   verify that you have saved your source code in your Git repository by using
+%   \command{git status} to ensure that everything is updated. You can see if your
+%   assignment submission meets the established correctness requirements by using
+%   the provided checking tools on your local computer and in checking the commits
+%   in GitHub.
+
+% \item {\bf Keep all of your files}. Don't delete your programs, output files,
+%   and written reports after you submit them through GitHub; you will need them
+%   again when you study for the quizzes and examinations and work on the other
+%   laboratory, practical, and final project assignments.
+
+% \item {\bf Back up your files regularly}. All of your files are regularly
+%   backed-up to the servers in the Department of Computer Science and, if you
+%   commit your files regularly, stored on GitHub. However, you may want to use a
+%   flash drive, Google Drive, or your favorite backup method to keep an extra
+%   copy of your files on reserve. In the event of any type of system failure, you
+%   are responsible for ensuring that you have access to a recent backup copy of
+%   all your files.
+
+\item {\bf Explore teamwork and technologies}. While certain aspects of the
+  course assignments will be challenging for you, each part is designed to give
+  you the opportunity to learn both fundamental concepts in the field of
+  computer science and explore advanced technologies that are commonly employed
+  at a wide variety of companies. To explore and develop new ideas, you should
+  regularly communicate with your team and/or the student technical leaders.
+
+\item {\bf Hone your technical writing skills}. Computer science assignments
+  require to you write technical documentation and descriptions of your
+  experiences when completing each task. Take extra care to ensure that your
+  writing is interesting and both grammatically and technically correct,
+  remembering that computer scientists must effectively communicate and
+  collaborate with their team members, the student technical leaders, and the
+  course instructor.
+
+\item {\bf Review the Honor Code on the syllabus}. While you may discuss your
+  assignments with others, copying source code or writing is a violation of
+  Allegheny College's Honor Code.
+
+\end{itemize}
+
+\section*{Reading Assignment}
+
+If you have not done so already, please read all of the relevant ``GitHub
+Guides'', available at \url{https://guides.github.com/}, that explain how to use
+many of the features that GitHub provides. In particular, please make sure that
+you have read guides such as ``Mastering Markdown'' and ``Documenting Your
+Projects on GitHub''; each of them will help you to understand how to use both
+GitHub and GitHub Classroom. In addition to reading all of the relevant
+documentation about Docker that is available at \url{https://docs.docker.com/},
+students should review the documentation about their chosen text editor (e.g.,
+Vim, Atom, or VS Code) and package manager (e.g., Chocolatey or Brew); to
+complete this part of the reading assignment, please visit the web site of each
+tool.
+
+Once you have bookmarked references for each of the aforementioned web sites and
+reviewed some of the printed guides, please access the Slack workspace that we
+will use in this course, available for signup at
+\url{https://join.slack.com/t/cs100fall2019/signup}. Once you have access to
+the Slack workspace, please join the \url{#practicals} channel and post one
+thing that you have learned about Docker, your chosen text editor, and your
+package manager. In addition to posting what you learned, please review the
+comments from other students, always attempting to post something that is not
+already in the channel. Please make sure that you keep Slack open throughout
+your completion of this practical assignment as you will continue to use it to
+communicate with other students, the technical leaders, and the course
+instructor, who will read and assess your insights.
+
+\section*{Installing and Using A Text Editor}
+
+You should first install a text editor, such as Atom or VS Code, which are
+respectively available from \url{https://atom.io/} and
+\url{https://code.visualstudio.com/}. Please follow the download instructions
+for your operating system to install one or both of these text editors.
+Optionally, you may also explore the installation of other editors such as Vim.
+Students who want to install Vim or Neovim should talk with the course
+instructor or a student technical leader. After choosing a text editor, return
+to the \url{#practicals} channel and say which editor you picked and why you
+selected it.
+
+\section*{Installing and Using a Package Manager}
+
+If you are using the Linux operating system, then you can use the default
+\program{apt} program to install other programs. Since Windows and MacOS do not
+provide a default package manager, you should install \program{choco} for
+Windows and \program{brew} for MacOS. To learn more about these tools, you can
+respectively visit \url{https://chocolatey.org/} and \url{https://brew.sh/}.
+Please follow the installation instructions for these package managers, making
+note of the challenges that you faced and the ways in which you solved them.
+Finally, please share your experiences in the correct Slack channel.
+
+After installing the package manager, you can use it to install other programs!
+For example, the Windows operating system does not have a good terminal window
+by default. To resolve this situation, you could install the new Windows Terminal
+by using the Chocolatey commands at
+\url{https://chocolatey.org/packages/microsoft-windows-terminal}. Since Linux
+and MacOS have suitable terminal windows available by default, everyone can now
+use a terminal to run package manager commands to install the \program{git}
+command-line tool for their operating system. Before moving onto the next step
+of the assignment, you should now have working versions of the following
+software tools:
+
+\begin{itemize}
+
+  \item Text editor
+
+  \item Package manager
+
+  \item Terminal window
+
+  \item Git command-line client
+
+\end{itemize}
+
+\section*{Installing and Using Docker}
+
+Docker is a platform for software engineers and system administrators to
+develop, deploy, and run software applications with containers that house
+full-fledged executable programs. When software engineers use Docker, they no
+longer have to focus on installing the programs that come inside of the Docker
+container. Instead, they can use a program in a Docker container as if it was
+installed on their development workstation, regardless of whether they are using
+Windows, Linux, or MacOS. A wide variety of companies, such as Visa and PayPal,
+use Docker. Throughout this semester, you will receive Docker containers that
+house programs like Java, Gradle, and GatorGrader. These containers will also
+hold the supporting libraries and packages needed to run the aforementioned
+programs. With that said, please note that you should not store source code or
+technical writing inside of a Docker container because it is a ``transient''
+software application that does not store its state upon shut-down. Finally, the
+provided Docker container will not include programs like Git or your text editor
+as the instructor expects that each student will install these programs
+separately.
+
+The Department of Computer Science has adopted Docker for all computer science
+courses. The course instructor, student technical leaders, and the departmental
+systems administrator will support the use of Docker on laptops running
+Windows, Linux, and MacOS. The instructor in this course will provide Docker
+containers with all of the necessary software to run all class exercises and
+laboratory and practical assignments. Students will then be able to develop and
+run Java programs on their own laptops, using an instructor-provided Docker
+container. Before being able to use Docker, students must first complete the
+installation of it, following steps that are specific to the operating system
+on your laptop. Bearing in mind that you must follow steps customized to your
+laptop, please talk to the instructor or a technical leader if you get stuck on
+these steps.
+
+Before reading these installation instructions for Docker, you should know that
+they are largely customized for students who use Windows or MacOS. If you use
+the Linux operating system, then you can follow the installation instructions
+available at this web site:
+\url{https://docs.docker.com/install/linux/docker-ce/ubuntu/}. Okay, now you are
+ready to install and use Docker!
+
+\begin{figure}
+
+\begin{verbatim}
+docker run hello-world
+
+docker : Unable to find image 'hello-world:latest' locally
+...
+
+latest:
+Pulling from library/hello-world
+ca4f61b1923c:
+Pulling fs layer
+ca4f61b1923c:
+Download complete
+ca4f61b1923c:
+Pull complete
+Digest: sha256:97ce6fa4b6cdc0790cda65fe7290b74cfebd9fa0c9b8c38e979330d547d22ce1
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+...
+\end{verbatim}
+
+\vspace*{-.25in}
+\caption{Example Output from Running a ``Hello World!''  Docker Container.}~\label{fig:docker}
+\vspace*{-.25in}
+\end{figure}
+
+\begin{enumerate}
+
+    \item Determine the version of your operating system. If your laptop meets
+      the requirements outlined below, then you can proceed to the next step.
+      For older MacOS and Windows operating systems, including Windows 10 Home,
+      please follow the installation instructions for Docker Toolbox, given at
+      \url{https://docs.docker.com/toolbox/toolbox_install_windows/}.
+
+      \textbf{Docker Desktop Specifications} \\
+      -- Mac:
+      \begin{itemize}
+        \item 2010 model or newer with hardware support for MMU, EPT, and Unrestricted Mode
+        \item MacOS Sierra 10.12 or newer
+        \item 4 GB of RAM
+        \item VirtualBox prior to version 4.3.30 cannot be installed
+      \end{itemize}
+      -- Windows:
+      \begin{itemize}
+        \item Windows 10 64bit Pro, Enterprise, or Education (Build 15063 or later)
+        \item Virtualization is enabled in BIOS
+        \item CPU SLAT-capable feature
+        \item 4 GB of RAM
+      \end{itemize}
+      -- Linux:
+      \begin{itemize}
+        \item 64bit
+        \item Kernel 3.10 or later
+      \end{itemize}
+
+    \item Go to \url{https://docs.docker.com/install/} and, from the menu on
+      the left-hand side, select and follow the installation tutorial for your
+      operating system (Linux, MacOS, or Windows). For example, if you have
+      MacOS you can find the installation guide at
+      \url{https://docs.docker.com/docker-for-mac/install/}. If you have the
+      Windows operating system, please follow the installation guide at
+      \url{https://docs.docker.com/docker-for-windows/install/}. Students with
+      Linux can use a package manager when following the instructions at the
+      aforementioned site.
+
+      Please note that the Docker Desktop for Mac and Windows requires you to
+      create an account to download the platform. To bypass this, you can use
+      the following direct download links:
+
+    \begin{itemize}
+        \item Windows: \\ \url{https://download.docker.com/win/stable/Docker\%20for\%20Windows\%20Installer.exe}
+        \item Mac: \url{https://download.docker.com/mac/stable/Docker.dmg}
+    \end{itemize}
+
+  \item Once your Docker installation is complete, please run a terminal window
+    on your machine. In MacOS and Linux, you can search for a ``terminal'' and
+    on Windows machines look for \command{cmd}. If you correctly followed the
+    previous assignment steps and you use Windows, then you can also use the new
+    ``terminal'' that you installed. Now, in the terminal window you can type
+    \command{docker run hello-world} command and press ``Enter''. If you see an
+    output similar to the one in Figure~\ref{fig:docker} you can high five a
+    technical leader as your Docker set up was successful!
+
+  \item Note that even though the previous Docker container caused your terminal
+    to print a diagnostic message, it did not allow you to run any programs.
+    With that said, it is also possible to download and use a Docker container
+    that contains the complete version of an operating system! To explore this
+    feature of Docker, please type the command \command{docker run -it ubuntu
+    /bin/bash} and notice that it produces output like that found in
+    Figure~\ref{fig:ubuntu}. Congratulations, you are now running the Linux
+    operating system inside a container running on your host operating system!
+    If you got stuck on this step, please ask the course instructor for help.
+
+  \item You can use commands line \command{cd} and \command{ls} to explore the
+    default configuration of this Ubuntu container provided by Docker. Outside
+    of Docker, type the commands \command{docker ps} and \command{docker images}
+    and explain this output to a technical leader and a fellow student. You
+    should also paste the output of these commands into the \url{#practicals}
+    channel in Slack. Remember, you can paste a block of formatted text into
+    Slack by using three ``backticks'', pasting the content, and then closing
+    with three additional backticks. Finally, please write in Slack about what
+    you experienced during the installation of Docker. What did you find
+    confusing? Why did you find it to be confusing? Based on your experiences in
+    this practical assignment, what do you think are the benefits associated
+    with using Docker in a computer science course?
+
+\end{enumerate}
+
+
+\begin{figure}
+
+\begin{verbatim}
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+35c102085707: Pull complete
+251f5509d51d: Pull complete
+8e829fe70a46: Pull complete
+6001e1789921: Pull complete
+Digest: sha256:d1d454df0f579c6be4d8161d227462d69e163a8ff9d20a847533989cf0c94d90
+Status: Downloaded newer image for ubuntu:latest
+\end{verbatim}
+
+\vspace*{-.25in}
+\caption{Example Output from Running a Ubuntu Docker Container.}~\label{fig:ubuntu}
+\vspace*{-.25in}
+\end{figure}
+
+\vspace*{-.05in}
+
+After completing each stage of this practical assignment, you should have these
+correctly working versions of the following programs installed on your laptop,
+regardless of your operating system.
+
+\vspace*{-.05in}
+
+\begin{itemize}
+  \setlength{\itemsep}{0pt}
+
+  \item Text editor
+
+  \item Package manager
+
+  \item Terminal window
+
+  \item Git command-line client
+
+  \item Docker container platform with:
+
+    \vspace*{-.1in}
+    \begin{itemize}
+      \setlength{\itemsep}{0pt}
+
+      \item Docker ``Hello World!'' container
+      \item Docker Ubuntu container
+
+    \end{itemize}
+
+\end{itemize}
+
+\vspace*{-.1in}
+
+Every student in this course is must have access to a Windows, MacOS, or Linux
+laptop that correctly runs these programs, in full support of forthcoming Java
+software development projects.
+
+\section*{Summary of the Required Deliverables}
+
+% \noindent Students do not need to submit printed source code or technical
+% writing for any assignment in this course.
+
+\noindent This assignment invites you to submit, using \url{#practicals} in
+Slack, the following deliverables:
+
+\vspace*{-.025in}
+
+\begin{enumerate}
+
+  \setlength{\itemsep}{0in}
+
+  \item A description of the challenges that you experienced and the solutions
+    that you developed for each challenge, following each of the prompts
+    previously given in the assignment sheet.
+
+  \item The correctly formatted and fully explained output from running Docker
+    commands like \command{docker ps} and \command{docker images} in your
+    correctly configured terminal window.
+
+\end{enumerate}
+
+\vspace*{-.075in}
+
+\section*{Evaluation of Your Practical Assignment}
+
+All practical assignments in this course are graded on a mastery, or
+credit-no-credit, basis. For this assignment, you will receive credit as long as
+you type all of the required information into the \url{#practicals} channel in
+Slack. You will know that you earned the checkmark grade for this assignment if
+you can see a checkmark emoji next to a comment that you made in the appropriate
+channel. Please bear in mind that, for future practical and laboratory
+assignments, you will submit all of your source code and technical writing
+through a GitHub repository created by GitHub Classroom. However, for this
+assignment, you must instead submit all of your work through Slack.
+
+\end{document}
