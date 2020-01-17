@@ -282,10 +282,10 @@ on your laptop. Bearing in mind that you must follow steps customized to your
 laptop, please talk to the instructor or a technical leader if you get stuck on
 these steps.
 
-Before reading these installation instructions for Docker, you should know that
-they are largely customized for students who use Windows or MacOS. If you use
-the Linux operating system, then you can follow the installation instructions
-available at this web site:
+In advance of reading these installation instructions for Docker, you should
+know that they are largely customized for students who use Windows or MacOS. If
+you use the Linux operating system, then you can follow the installation
+instructions available at this web site:
 \url{https://docs.docker.com/install/linux/docker-ce/ubuntu/}. Okay, now you are
 ready to install and use Docker!
 
@@ -318,18 +318,22 @@ This message shows that your installation appears to be working correctly.
 \vspace*{-.25in}
 \end{figure}
 
+% For older MacOS and Windows operating systems, including Windows 10 Home, please
+% follow the installation instructions for Docker Toolbox, given at
+% \url{https://docs.docker.com/toolbox/toolbox_install_windows/}.
+
 \begin{enumerate}
 
-    \item Determine the version of your operating system. If your laptop meets
-      the requirements outlined below, then you can proceed to the next step.
-      For older MacOS and Windows operating systems, including Windows 10 Home,
-      please follow the installation instructions for Docker Toolbox, given at
-      \url{https://docs.docker.com/toolbox/toolbox_install_windows/}. Please
-      note that the Department of Computer Science at Allegheny College
-      officially supports the use of Docker only on Windows 10 Pro, Windows 10
-      Enterprise, MacOS, and Linux. All other operating systems (e.g., Chrome
+    \item Fist, determine the version of your operating system. If your laptop
+      meets the requirements outlined below, then you can proceed to the next
+      step. Please note that the Department of Computer Science at Allegheny
+      College exclusively supports the use of Docker on Windows 10 Pro, Windows
+      10 Enterprise, MacOS, and Linux. All other operating systems (e.g., Chrome
       OS, Windows 7, Windows 8, or Windows 10 Home) are not officially supported
-      and may not work reliably with Docker Toolbox. In summary, here are the
+      and may not work reliably with legacy programs such as Docker Toolbox.
+      Students who are using an unsupported version of Windows (e.g., Windows 10
+      Home), should purchase an upgrade to Windows 10 Pro or use one of the
+      department-provided laptops or desktops. In summary, here are the
       specifications required to run the Docker Desktop program used in this
       course:
 
@@ -343,7 +347,7 @@ This message shows that your installation appears to be working correctly.
       \end{itemize}
       -- Windows:
       \begin{itemize}
-        \item Windows 10 64bit Pro, Enterprise, or Education (Build 15063 or later)
+        \item Windows 10 64--bit Pro, Enterprise, or Education (Build 15063 or later)
         \item Virtualization is enabled in BIOS
         \item CPU SLAT-capable feature
         \item 4 GB of RAM
@@ -378,9 +382,12 @@ This message shows that your installation appears to be working correctly.
     on Windows machines look for \command{cmd}. If you correctly followed the
     previous assignment steps and you use Windows, then you can also use the new
     ``terminal'' that you installed. Now, in the terminal window you can type
-    \command{docker run hello-world} command and press ``Enter''. If you see an
-    output similar to the one in Figure~\ref{fig:docker} you can high five a
-    technical leader as your Docker set up was successful!
+    \command{docker run hello-world} command and press ``Enter''. If this step
+    does not work, please read the troubleshooting section at the end of the
+    sheet and work with the student technical leaders and the course instructor
+    to resolve the problem. If you see an output similar to the one in
+    Figure~\ref{fig:docker} you can high five a technical leader as your Docker
+    set up was successful!
 
   \item Note that even though the previous Docker container caused your terminal
     to print a diagnostic message, it did not allow you to run any programs.
@@ -464,9 +471,9 @@ Every student in this course is must have access to a Windows, MacOS, or Linux
 laptop that correctly runs these programs, in full support of forthcoming Java
 software development projects.
 
-\section*{Summary of Common Challenges}
+\section*{Troubleshooting for Common Challenges}
 
-\section*{Mastery Questions to Answer in Slack}
+\section*{Technical Questions to Answer in Slack}
 
 \section*{Summary of the Required Deliverables}
 
