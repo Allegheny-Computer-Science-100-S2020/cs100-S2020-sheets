@@ -467,8 +467,8 @@ that you use the \command{new Date()} construct in the Java source code to
 cause the program to display today's date.
 
 \marginnote{\caution{Write useful commits}}[.75in] To get started with the use
-of GatorGrader, type the command \gatorgraderstart{} in your terminal window. If
-your laboratory work does not meet all of the assignment's requirements, then
+of GatorGrader, type the command \gatorgraderstart{} in your Docker container.
+If your laboratory work does not meet all of the assignment's requirements, then
 you will see a summary of the failing checks along with a statement giving the
 percentage of checks that are currently passing. If you do have mistakes in your
 assignment, then you will need to review GatorGrader's output, find the mistake,
@@ -478,10 +478,11 @@ using the \gitcommit{} and \gitpush{} commands. For example, if you want to
 signal that the \mainprogramsource{} file has been changed and is ready for
 transfer to GitHub you would first type \gitcommitmainprogram{} in your
 terminal, followed by typing \gitpush{} and checking to see that the transfer to
-GitHub is successful. If you notice that transferring your code or writing to
-GitHub did not work correctly, then read the errors in your terminal window and
-please try to determine why, asking a technical leader or the course instructor
-for assistance, if necessary.
+GitHub is successful. Please note that students can also use their text editor
+to transfer their source code to GitHub. If you notice that transferring your
+code or writing to GitHub did not work correctly, then read the errors in your
+terminal window and please try to determine why, asking a technical leader or
+the course instructor for assistance, if necessary.
 
 \marginnote{\caution{Verify all checks}}[1in] After the course instructor
 enables \step{continuous integration} with a system called Travis CI, when you
@@ -507,6 +508,8 @@ towards your grade for this laboratory assignment.
 writing for any assignment in this course. Instead, this assignment invites you
 to submit, using GitHub, the following deliverables.
 
+\vspace*{-.05in}
+
 \begin{enumerate}
 
 \setlength{\itemsep}{0in}
@@ -515,8 +518,8 @@ to submit, using GitHub, the following deliverables.
   that you typed in the terminal window and the Java source code that you wrote
   in your text editor. This Markdown-based document should explain the input,
   output, and behavior of each command (e.g., \command{gradle build}) and the
-  challenges that you confronted when using it. For every challenge that you
-  encountered, please explain your solution for it.
+  challenges that you confronted when using it. For every technical challenge
+  that you encountered, please explain your solution for it.
 
 \item A properly documented, well-formatted, and correct version of
   \mainprogramsource{} that both meets all of the established requirements and
@@ -524,20 +527,26 @@ to submit, using GitHub, the following deliverables.
 
 \end{enumerate}
 
+\vspace*{-.1in}
+
 \section*{Evaluation of Your Laboratory Assignment}
 
-Using a report that the instructor shares with you through the commit log in
-GitHub, you will privately received a grade on this assignment and feedback on
-your submitted deliverables. Your grade for the assignment will be a function of
-the whether or not it was submitted in a timely fashion and if your program
-received a green \checkmark{} indicating that it met all of the requirements.
-Other factors will also influence your final grade on the assignment. In
-addition to studying the efficiency and effectiveness and documentation of your
-Java source code, the instructor will also evaluate the correctness of your
-technical writing. If your submission receives a red \naughtmark{}, the
-instructor will reduce your grade for the assignment. Finally, please remember
-to read your GitHub repository's \program{README.md} file for a description of
-the four grades that you will receive for this laboratory assignment.
+\marginnote{\caution{Request feedback}}[.8in] Using a report that the instructor
+shares with you through the commit log in GitHub, you will privately received a
+grade on this assignment and feedback on your submitted deliverables. Your grade
+for the assignment will be a function of the whether or not it was submitted in
+a timely fashion and if your program received a green \checkmark{} indicating
+that it met all of the requirements. Other factors will also influence your
+final grade on the assignment. In addition to studying the efficiency and
+effectiveness and documentation of your Java source code, the instructor will
+also evaluate the correctness of your technical writing. If your submission
+receives a red \naughtmark{}, the instructor will reduce your grade for the
+assignment. Please remember to read your GitHub repository's \program{README.md}
+file for a description of the four grades that you will receive for this
+laboratory assignment. Students should follow the instructions in the
+\program{README.md} file to ask the instructor to review their assignment and to
+provide you with constructive feedback before you submit it for the final
+assessment.
 
 \section*{Adhering to the Honor Code}
 
