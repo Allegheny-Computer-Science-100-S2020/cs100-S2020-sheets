@@ -4,12 +4,14 @@ before_install:
   texlive-latex-recommended
 script:
 - mkdir _build
+- latexmk -pdf -outdir=_build lab01/cs100S2020_lab01.tex
 - latexmk -pdf -outdir=_build practical01/cs100S2020_practical01.tex
 deploy:
   provider: releases
   api_key:
     secure: BNxUrKPw7crGTFdFBK9Ot462UK8zPaqitgrIk7EiIfw1uf7ni/U6lt1eKuETbJ3t5BN+2klpcWtfHnD1zT9jOvG38u6UE6vVRVYVV1Kjb+xzbmlU899Ni/UW2lElVr/N6b3706JD6NKx3JH0asZzAZo8wmORNCi3QmTLWyBFy6YdyyCvXOUJlAScjtAS9+KrKFBTNy0jtydePt+MYZusdaNw4mbhZUVxVzpCuzo6SWENv7q7iPbNoA6LHGxwuSyKw0Ac5wEADPZj5n0wpnL6KvaGBnVdhd86QbJqR/WPDGV4t3sNabDBa1Rc+C+OHPZL6P+vKcogZV5DqJIoJX/KZvrfxRI2Ebw9QrnyiLnXxC+tSKQtKA6oPYSRDxyTu0ih163G28LOV/7Bce5LB9Vjr8K2DqDl5Q7G8dyvBsFwdHUHY+ebNpVH1l3X2oavtQT1kr+dVGQaUma7oo1K9Hnd1apQ+iqO6SSato6xflFBdlTz354DT47DjcsCR9MLMnaaswMGxCB+WjfFElL+nqkWLaGVWK2J2vjQSwD4WabihC3D9Db/fmk7IFvfcUQXTbq98VEoUFueX2gOYhwGaJbH37A7gms+BO+UhhzBWYVkixINrCosrpEnFn3NwG+pv4ETIFF/mz+J0h1WS/d84/AR7d63BSIXvijV7PngyksJP7w=
   file:
+    - _build/cs100S2020_lab01.pdf
     - _build/cs100S2020_practical01.pdf
   skip_cleanup: true
   on:
