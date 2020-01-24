@@ -187,16 +187,16 @@ technical leaders if you have questions on these reading assignments.
 To access the practical assignment, you should go into the
 \channel{\#announcements} channel in our Slack workspace and find the
 announcement that provides a link for it. Copy this link and paste it into your
-web browser. Now, you should accept the practical assignment and see that GitHub
-Classroom created a new GitHub repository for you to access the assignment's
-starting materials and to store the completed version of your assignment.
-Specifically, to access your new GitHub repository for this assignment, please
-click the green ``Accept'' button and then click the link that is prefaced with
-the label ``Your assignment has been created here''. If you accepted the
-assignment and correctly followed these steps, you should have created a GitHub
-repository with a name like
+web browser. Now, you should accept the practical assignment and see that
+GitHub Classroom created a new GitHub repository for you to access the
+assignment's starting materials and to store the completed version of your
+assignment. Specifically, to access your new GitHub repository for this
+assignment, please click the green ``Accept'' button and then click the link
+that is prefaced with the label ``Your assignment has been created here''. If
+you accepted the assignment and correctly followed these steps, you should have
+created a GitHub repository with a name like
 ``Allegheny-Computer-Science-101-Spring-2020/computer-science-101-spring-2020-practical-2-gkapfham''.
-Unless you provide the instructor with documentation of the extenuating
+Unless you provide the course instructor with documentation of the extenuating
 circumstances that you are facing, not accepting the assignment means that you
 automatically receive a failing grade for it. Please follow the steps from a
 previous assignment for finding your ``home base'' for this practical
@@ -226,14 +226,27 @@ docker run --rm --name dockagator \
 \end{verbatim}
 \vspace*{-.05in}
 
-Please recall that you may need to type the previous command differently if you
-are using Windows or using a non-standards-compliant terminal on Windows. For
-instance, you may need to place the quotation marks in a different location or
-type out the fully qualified name of the directory containing this project for
-\command{\$(pwd)} and type the fully qualified name of your home directory for
-\command{\$HOME}. Don't forget that the \program{README} in your GitHub
-repository has more tips for correctly using Docker! For example, that file
-explains how to run an ``interactive terminal'' in a Docker container.
+Don't forget to review the previous laboratory assignment sheet to learn how to
+enter the Docker container's shell and run a series of commands. Finally, if the
+above \command{docker run} command does not work correctly on the Windows
+operating system, then you may need to instead run the following command to work
+around limitations in the terminal window called \command{cmd}:
+
+\begin{verbatim}
+docker run --rm --name dockagator \
+  -v "%cd%:/project" \
+  -v "%HomeDrive%%HomePath%/.dockagator:/root/.local/share" \
+  gatoreducator/dockagator
+\end{verbatim}
+
+% Please recall that you may need to type the previous command differently if you
+% are using Windows or using a non-standards-compliant terminal on Windows. For
+% instance, you may need to place the quotation marks in a different location or
+% type out the fully qualified name of the directory containing this project for
+% \command{\$(pwd)} and type the fully qualified name of your home directory for
+% \command{\$HOME}. Don't forget that the \program{README} in your GitHub
+% repository has more tips for correctly using Docker! For example, that file
+% explains how to run an ``interactive terminal'' in a Docker container.
 
 \section*{Checking the Correctness of Your Program and Writing}
 
