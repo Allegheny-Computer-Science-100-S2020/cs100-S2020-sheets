@@ -253,10 +253,10 @@ a \mbox{technical leader}.
 
 \begin{figure}[tb]
   \begin{verbatim}
-    Gregory M. Kapfhammer Thu Jan 30 10:56:40 EST 2020
-    Distance to the moon in miles: 238855
-    Number of yards per mile: 1760
-    Distance to the moon in yards: 420384800
+Gregory M. Kapfhammer Thu Jan 30 10:56:40 EST 2020
+Distance to the moon in miles: 238855
+Number of yards per mile: 1760
+Distance to the moon in yards: 420384800
   \end{verbatim}
 \vspace*{-.25in}
 \caption{Output from Running the {\tt ComputeMoonDistance} Program.}
@@ -308,18 +308,16 @@ the project directory should contain the source code and technical writing for
 this assignment, as provided to you through GitHub during the completion of a
 previous step. Additionally, the cache directory should not contain anything
 other than directories and programs created by DockaGator, thus ensuring that
-they are not otherwise overwritten during the completion of the assignment. If
-the above \command{docker run} command does not work correctly on the Windows
+they are not otherwise overwritten during the completion of the assignment.
+%
+If the above \command{docker run} command does not work correctly on the Windows
 operating system, then you may need to instead run the following command to work
-around limitations in the terminal window. Please recall that some Windows
-terminal emulators may not correctly interpret \command{\$(pwd)} or
-\command{\$HOME}, meaning that you must ``expand'' them to include the correct
-path for this assignment.
+around limitations in the terminal:
 
 \begin{verbatim}
 docker run --rm --name dockagator \
-  -v "$(pwd):/project" \
-  -v "$HOME/.dockagator:/root/.local/share" \
+  -v "%cd%:/project" \
+  -v "%HomeDrive%%HomePath%/.dockagator:/root/.local/share" \
   gatoreducator/dockagator
 \end{verbatim}
 
@@ -332,22 +330,25 @@ resolving it. Re-save your program and then build it again with the
 \gradlebuild{}. If you cannot build \mainprogram{} correctly, then please talk
 with a technical leader or the instructor.
 
-\marginnote{\think{Reflect on challenges}}[.75in] When all of the errors are
-eliminated, you can run your program by typing \gradlerun{} in the terminal
-window---this is the ``execute'' step that will run your program and produce the
-designated output. You should see your name, today's date, and three more lines
-of text, as given in Figure~\ref{fig:output}. Make sure there are spaces
-separating words in your output (did you forget to put a space inside the
-quotation marks after your last name?). If not, then repair the program and
-re-build and re-run it. Once the program runs, please reflect on this process.
-What step did you find to be the most challenging? Why? You should write your
-reflections in a file, called \reflection{}, that uses the Markdown writing
-language. You can learn more about Markdown by viewing the aforementioned GitHub
-guide. To complete this aspect of the assignment, you should write technical
-content that reflects on your experiences. You should focus on building a better
-understanding of each command and code segment --- if there is one that you do
-not understand, please ask someone! For instance, can you explain the purpose
-and behavior of these statements?
+% NOTE: Did not format correctly after adding the new Docker command for Windows
+
+% \marginnote{\think{Reflect on challenges}}[.25in]
+
+When all of the errors are eliminated, you can run your program by typing
+\gradlerun{} in the terminal window---this is the ``execute'' step that will run
+your program and produce the designated output. You should see your name,
+today's date, and three more lines of text, as given in Figure~\ref{fig:output}.
+Make sure there are spaces separating words in your output (did you forget to
+put a space inside the quotation marks after your last name?). If not, then
+repair the program and re-build and re-run it. Once the program runs, please
+reflect on this process. What step did you find to be the most challenging? Why?
+You should write your reflections in a file, called \reflection{}, that uses the
+Markdown writing language. You can learn more about Markdown by viewing the
+aforementioned GitHub guide. To complete this aspect of the assignment, you
+should write technical content that reflects on your experiences. You should
+focus on building a better understanding of each command and code segment --- if
+there is one that you do not understand, please ask someone! For instance, can
+you explain the purpose and behavior of these statements?
 
 \vspace*{-.1in}
 \begin{itemize}
@@ -357,6 +358,7 @@ and behavior of these statements?
   \item \program{import java.util.Date;}
   \item \program{int milesToMoon = 238855;}
   \item \program{int yardsPerMile = 1760;}
+  \item \program{yardsToMoon = milesToMoon * yardsPerMile;}
 
 \end{itemize}
 \vspace*{-.1in}
