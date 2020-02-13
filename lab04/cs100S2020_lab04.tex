@@ -1,0 +1,487 @@
+\documentclass[11pt]{article}
+
+% NOTE: The "Edit" sections are changed for each assignment
+
+% Edit these commands for each assignment
+
+\newcommand{\assignmentduedate}{October 8}
+\newcommand{\assignmentassignedate}{October 1}
+\newcommand{\assignmentnumber}{Four}
+
+\newcommand{\labyear}{2019}
+\newcommand{\labday}{Tuesday}
+\newcommand{\labtime}{2:30 pm}
+
+\newcommand{\assigneddate}{Assigned: \labday, \assignmentassignedate, \labyear{} at \labtime{}}
+\newcommand{\duedate}{Due: \labday, \assignmentduedate, \labyear{} at \labtime{}}
+
+% Edit these commands to give the name to the main program
+
+\newcommand{\mainprogram}{\lstinline{ConvertGraphicImage.java}}
+\newcommand{\mainprogramsource}{\lstinline{src/main/java/labfour/ConvertGraphicImage.java}}
+\newcommand{\mainprograminput}{\lstinline{input/tip_inputs.txt}}
+
+% Edit this commands to describe key deliverables
+
+\newcommand{\reflection}{\lstinline{writing/reflection.md}}
+
+% Commands to describe key development tasks
+
+% --> Running gatorgrader
+\newcommand{\gatorgraderstart}{\command{gradle grade}}
+\newcommand{\gatorgradercheck}{\command{gradle grade}}
+
+% --> Compiling and running program with gradle
+\newcommand{\gradlebuild}{\command{gradle build}}
+\newcommand{\gradlerun}{\command{gradle run}}
+
+% Commands to describe key git tasks
+
+\newcommand{\gitcommitfile}[1]{\command{git commit #1}}
+\newcommand{\gitaddfile}[1]{\command{git add #1}}
+
+\newcommand{\gitadd}{\command{git add}}
+\newcommand{\gitcommit}{\command{git commit}}
+\newcommand{\gitpush}{\command{git push}}
+\newcommand{\gitpull}{\command{git pull}}
+
+\newcommand{\gitaddmainprogram}{\command{git add src/main/java/labfour/ConvertGraphicImage.java}}
+\newcommand{\gitcommitmainprogram}{\command{git commit src/main/java/labfour/ConvertGraphicImage.java -m "Your
+descriptive commit message"}}
+
+% Use this when displaying a new command
+
+\newcommand{\command}[1]{``\lstinline{#1}''}
+\newcommand{\program}[1]{\lstinline{#1}}
+\newcommand{\url}[1]{\lstinline{#1}}
+\newcommand{\channel}[1]{\lstinline{#1}}
+\newcommand{\option}[1]{``{#1}''}
+\newcommand{\step}[1]{``{#1}''}
+
+% Enable margin notes to catch student attention
+
+\usepackage{marginnote}
+\reversemarginpar
+\renewcommand*{\raggedrightmarginnote}{\centering}
+
+% Load extra fonts
+
+\usepackage{pifont}
+\newcommand{\checkmark}{\ding{51}}
+\newcommand{\naughtmark}{\ding{55}}
+\usepackage{fontawesome}
+
+% Commands for margin notes, for optional use
+
+\newcommand{\book}{\faBook}
+\newcommand{\group}{\faUsers}
+
+% Commands for making key margin notes, fully integrated
+
+\newcommand{\caution}[1]{\null\hfill\LARGE{\faWarning{}}\newline\scriptsize{\em{#1}}}
+\newcommand{\discuss}[1]{\null\hfill\LARGE{\faCommentO{}}\newline\scriptsize{\em{#1}}}
+\newcommand{\resource}[1]{\null\hfill\LARGE{\faLink{}}\newline\scriptsize{\em{#1}}}
+\newcommand{\think}[1]{\null\hfill\LARGE{\faCogs{}}\newline\scriptsize{\em{#1}}}
+
+\usepackage{listings}
+\lstset{
+  basicstyle=\small\ttfamily,
+  columns=flexible,
+  breaklines=true
+}
+
+\usepackage{fancyhdr}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{Computer Science 100}
+\lhead{Laboratory Assignment \assignmentnumber{}}
+\rfoot{Page \thepage}
+\lfoot{\duedate}
+
+\usepackage{titlesec}
+\titlespacing\section{0pt}{6pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+
+\newcommand{\labtitle}[1]
+{
+  \begin{center}
+    \begin{center}
+      \bf
+      CMPSC 100\\Computational Expression\\
+      Fall 2019\\
+      \medskip
+    \end{center}
+    \bf
+    #1
+  \end{center}
+}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\labtitle{Laboratory \assignmentnumber{} \\ \assigneddate{} \\ \duedate{}}
+
+\section*{Objectives}
+
+% You will also continue to practice using Slack to support
+% communication with the teaching assistants and the course instructor.
+
+To continue to practice using GitHub to access the files for a laboratory
+assignment. Additionally, to master the use of your laptop's operating system
+and software development programs such as a ``terminal window'' and the ``Docker
+desktop''. Next, you will learn how to implement a Java program that reads a
+graphical image from the file system, performs three graphical transformations
+on the images, and then saves the images on the file system. You will also learn
+more about how the Java language organizes classes into packages and uses
+\command{import} statements.
+%
+Finally, you will continue to explore the use of methods and variables in an
+object-oriented Java program.
+
+\section*{Suggestions for Success}
+
+\begin{itemize}
+  \setlength{\itemsep}{0pt}
+
+\item {\bf Follow each step carefully}. Slowly read each sentence in the
+  assignment sheet, making sure that you precisely follow each instruction. Take
+  notes about each step that you attempt, recording your questions and ideas and
+  the challenges that you faced. If you are stuck, then please tell a technical
+  leader or instructor what assignment step you recently completed.
+
+\item {\bf Regularly ask and answer questions}. Please log into Slack at the
+  start of a laboratory or practical session and then join the appropriate
+  channel. If you have a question about one of the steps in an assignment, then
+  you can post it to the designated channel. Or, you can ask a student sitting
+  next to you or talk with a technical leader or the course instructor.
+
+\item {\bf Store your files in GitHub}. Starting with this laboratory
+  assignment, you will be responsible for storing all of your files (e.g., Java
+  source code and Markdown-based writing) in a Git repository using GitHub
+  Classroom. Please verify that you have saved your source code in your Git
+  repository by using \command{git status} to ensure that everything is
+  updated. You can see if your assignment submission meets the established
+  correctness requirements by using the provided checking tools on your local
+  computer and by checking the commits in GitHub.
+
+\item {\bf Keep all of your files}. Don't delete your programs, output files,
+  and written reports after you submit them through GitHub; you will need them
+  again when you study for the quizzes and examinations and work on the other
+  laboratory, practical, and final project assignments.
+
+\item {\bf Explore teamwork and technologies}. While certain aspects of the
+  laboratory assignments will be challenging for you, each part is designed to
+  give you the opportunity to learn both fundamental concepts in the field of
+  computer science and explore advanced technologies that are commonly employed
+  at a wide variety of companies. To explore and develop new ideas, you should
+  regularly communicate with your team and/or the student technical leaders.
+
+\item {\bf Hone your technical writing skills}. Computer science assignments
+  require to you write technical documentation and descriptions of your
+  experiences when completing each task. Take extra care to ensure that your
+  writing is interesting and both grammatically and technically correct,
+  remembering that computer scientists must effectively communicate and
+  collaborate with their team members and the student technical leaders and
+  course instructor.
+
+\item {\bf Review the Honor Code on the syllabus}. While you may discuss your
+  assignments with others, copying source code or writing is a violation of
+  Allegheny College's Honor Code.
+
+\end{itemize}
+
+\section*{Reading Assignment}
+
+If you have not done so already, please read all of the relevant ``GitHub
+Guides'', available at \url{https://guides.github.com/}, that explain how to use
+many of the features that GitHub provides. In particular, please make sure that
+you have read guides such as ``Mastering Markdown'' and ``Documenting Your
+Projects on GitHub''; each of them will help you to understand how to use both
+GitHub and GitHub Classroom. To do well on this assignment, you should also
+review Chapter 1 and study Chapter 2 in the textbook. Next, please read Section
+3.1's content about objects, Section 3.3's content about packages, and Section
+3.11's content about colors in the Java programming language.
+%
+Please see the instructor if you have questions these reading assignments.
+
+\section*{Accessing the Laboratory Assignment on GitHub}
+
+To access the laboratory assignment, you should go into the
+\channel{\#announcements} channel in our Slack team and find the announcement
+that provides a link for it. Copy this link and paste it into your web browser.
+Now, you should accept the laboratory assignment and see that GitHub Classroom
+created a new GitHub repository for you to access the assignment's starting
+materials and to store the completed version of your assignment. Specifically,
+to access your new GitHub repository for this assignment, please click the green
+``Accept'' button and then click the link that is prefaced with the label ``Your
+assignment has been created here''. If you accepted the assignment and correctly
+followed these steps, you should have created a GitHub repository with a name
+like
+``Allegheny-Computer-Science-100-Fall-2019/computer-science-100-fall-2019-lab-4-gkapfham''.
+Unless you provide the instructor with documentation of the extenuating
+circumstances that you are facing, not accepting the assignment means that you
+automatically receive a failing grade for it.
+
+Before you move to the next step of this assignment, please make sure that you
+read all of the content on the web site for your new GitHub repository, paying
+close attention to the technical details about the commands that you will type
+and the output that your program must produce. Now you are ready to download the
+starting materials to your laboratory computer. Click the ``Clone or download''
+button and, after ensuring that you have selected ``Clone with SSH'', please
+copy this command to your clipboard. To enter into the right directory you
+should now type \command{cd cs100F2019}. Next, you can type the command
+\command{ls} and see that there are some files or directories inside of this
+directory. By typing \command{git clone} in your terminal and then pasting in
+the string that you copied from the GitHub site you will download all of the
+code for this assignment. For instance, if the course instructor ran the
+\command{git clone} command in the terminal, it would look like:
+
+\begin{lstlisting}
+  git clone git@github.com:Allegheny-Computer-Science-100-F2019/computer-science-100-fall-2019-lab-4-gkapfham.git
+\end{lstlisting}
+
+After this command finishes, you can use \command{cd} to change into the new
+directory. If you want to \step{go back} one directory from your current
+location, then you can type the command \command{cd ..}. Please continue to use
+the \command{cd} and \command{ls} commands to explore the files that you
+automatically downloaded from GitHub. What files and directories do you see?
+What do you think is their purpose? Spend some time exploring, sharing your
+discoveries with a neighbor and a \mbox{student technical leader}.
+
+\section*{Performing Graphical Transformations on an Input Image}
+
+Today, you will view and improve another Java program in your text editor! To
+get started, make sure that you can load the Java source code in your text
+editor and find the Markdown-based file in which you will include your technical
+writing. After you have started a terminal window and entered into the provided
+Docker container, build the program and notice that it is not compiling
+correctly! After you have solved these issues, please make sure that you can
+explain the meaning and purpose of the Java \command{import} statements. If you
+are not sure how these code segments influence the compilation and execution of
+the program, please talk with the course instructor. Ultimately, your program
+should produce the following ten lines of output, revealing that it correctly
+performed an image conversion in three different fashions: grey-scale, saturate,
+and de-saturate.
+
+\begin{verbatim}
+  Gregory M. Kapfhammer Tue Oct 01 13:12:30 EDT 2019
+  Starting to convert to grey-scale ...
+  Saved images/source_converted_greyscale.png
+  ... Finished converting to grey-scale!
+  Starting to convert to brighter, saturated image ...
+  Saved images/source_converted_brighten.png
+  ... Finished converting to brighter, saturated image!
+  Starting to convert to darker, subdued image ...
+  Saved images/source_converted_darken.png
+  ... Finished converting to darker, subdued image!
+\end{verbatim}
+
+\marginnote{\caution{Add missing source code}}[.6in] With the exception of the
+name and date on which the program was run, your \mainprogramsource{} should
+produce the same output as seen in the above example. Does your \mainprogram{}
+produce the expected output?
+%
+Please notice that the provided source code has many \command{TODO} markers
+inside of it. You should carefully read each of these markers and try to
+complete the specified task. For instance, you should add the correct
+\command{import} statements, complete the implementation of two Java methods,
+ensure that Java methods are correctly called from the \program{main} method,
+and add new \command{println} statements.
+%
+Remember, you need to run the program inside of a Docker container, using a
+command like the following one. Don't forget that you may have to adjust this
+command for your specific operating system and terminal window, consulting the
+instructor if you need assistance with the use of Docker Desktop.
+
+\begin{verbatim}
+docker run -it --rm --name dockagator \
+  -v "$(pwd):/project" \
+  -v "$HOME/.dockagator:/root/.local/share" \
+  gatoreducator/dockagator /bin/bash
+\end{verbatim}
+
+\marginnote{\caution{Produce graphical images}}[.6in] If you want to \step{build}
+your program you can type the command \gradlebuild{} in your Docker container,
+thereby causing the Java compiler to check your program for errors and get it
+ready to run. If you get any error messages, go back into the text editor and
+try to figure out what you mis-typed and fix it. Once you have solved the
+problem, make a note of the error and the solution for resolving it. Re-save
+your program and then build it again by re-running the \gradlebuild{}. If you
+cannot build \mainprogram{} correctly, then please talk with a technical leader
+or the instructor. When you are coding don't forget to remove the \command{TODO}
+markers and add comments explaining the meaning and purpose of each line. After
+you have completed the program, please make sure that it produces three new
+graphical images in the \command{images} directory of your repository.
+
+\marginnote{\think{Reflect on challenges}}[.7in] When all program errors are
+eliminated, you can run your program by typing \gradlerun{} in the
+terminal---this is the ``execute'' step that will run your program and produce
+the designated output. You should see your name, today's date, and nine more
+lines of text. Make sure there are spaces separating words in your output (did
+you forget to put a space inside the quotation marks after your last name?). If
+not, then repair the program and re-build and re-run it. Once the program runs,
+please reflect on this process. What step did you find to be the most
+challenging? Why? You should write your reflections in a file, called
+\reflection{}, that uses the Markdown writing language. To complete this aspect
+of the assignment, you should write high-quality paragraphs that report on your
+experiences with the commands and Java code segments.
+
+\section*{Checking the Correctness of Your Program and Writing}
+
+\marginnote{\resource{Study style guides}}[.75in] As verified by the Checkstyle
+tool, the source code for the \mainprogram{} file must adhere to all of the
+requirements in the Google Java Style Guide available at
+\url{https://google.github.io/styleguide/javaguide.html}. The Markdown file that
+contains your reflection must adhere to the standards described in the Markdown
+Syntax Guide \url{https://guides.github.com/features/mastering-markdown/}.
+Finally, your \reflection{} file should adhere to the Markdown standards
+established by the \step{Markdown linting} tool available at
+\url{https://github.com/markdownlint/markdownlint/}. Instead of requiring you to
+manually check that your deliverables adhere to these industry-accepted
+standards, the GatorGrader and Gradle tools that you will use in this assignment
+makes it easy for you to check if your submission meets the correctness
+standards.
+
+Since this is not your first laboratory assignment, you will notice that the
+provided source code does not contain all of the required imports at the top of
+the Java source code file. This means that you will have to inspect the source
+code from previous laboratory and practical assignments to review how to create
+the imports in the \mainprogramsource{} file. Moreover, the provided source code
+is missing many of the lines that are needed to pass the GatorGrader checks! For
+instance, GatorGrader will check to ensure that the \mainprogram{} produces
+exactly ten lines of output, that you use the \command{new Date()} construct in
+the source code, and that the program correctly produces the same output as seen
+on the previous page.
+
+\marginnote{\caution{Write useful commits}}[.75in] To get started with the use
+of GatorGrader, type the command \gatorgraderstart{} in your Docker container.
+If your laboratory work does not meet all of the assignment's requirements, then
+you will see a summary of the failing checks along with a statement giving the
+percentage of checks that are currently passing. If you do have mistakes in your
+assignment, then you will need to review GatorGrader's output, find the mistake,
+and try to fix it. Once your program is building correctly, fulfilling at least
+some of the assignment's requirements, you should transfer your files to GitHub
+using the \gitcommit{} and \gitpush{} commands. For example, if you want to
+signal that the \mainprogramsource{} file has been changed and is ready for
+transfer to GitHub you would first type \gitcommitmainprogram{} in your
+terminal, followed by typing \gitpush{} and checking to see that the transfer to
+GitHub is successful. If you notice that transferring your code or writing to
+GitHub did not work correctly, then read the errors in your terminal window and
+please try to determine why, asking a technical leader or the course instructor
+for assistance, if necessary.
+
+After the course instructor enables \step{continuous integration} with a system
+called Travis CI, when you use the \gitpush{} command to transfer your source
+code to your GitHub repository, Travis CI will initialize a \step{build} of your
+assignment, checking to see if it meets all of the requirements. If both your
+source code and writing meet all of the established requirements, then you will
+see a green \checkmark{} in the listing of commits in GitHub after awhile. If
+your submission does not meet the requirements, a red \naughtmark{} will appear
+instead. The instructor will reduce a student's grade for this assignment if the
+red \naughtmark{} appears on the last commit in GitHub immediately before the
+assignment's due date. Yet, if the green \checkmark{} appears on the last commit
+in your GitHub repository, then you satisfied all of the main checks, thereby
+allowing the course instructor to evaluate other aspects of your source code and
+writing, as further described in the \step{Evaluation} section of this
+assignment sheet. Unless you provide the instructor with documentation of the
+extenuating circumstances that you are facing, no late work will be considered
+towards your grade for this laboratory assignment.
+
+In conclusion, here are some points to consider as you complete this laboratory
+assignment:
+
+% Give hints about the use of import statements for classes in AWT package.
+
+\begin{enumerate}
+  \setlength{\itemsep}{0pt}
+
+\item Your program will not compile correctly unless you add the correct
+  \program{import} statements to the top of the \mainprogramsource{} file. For
+  instance, here is one block of inputs that you need to ensure are available so
+  that the program compiles:
+
+  \vspace*{-.1in}
+  \begin{verbatim}
+    import java.awt.color.ColorSpace;
+    import java.awt.image.BufferedImage;
+    import java.awt.image.BufferedImageOp;
+    import java.awt.image.ColorConvertOp;
+  \end{verbatim}
+  \vspace*{-.25in}
+
+\item As in past assignments, your program only needs to have one {\tt main}
+  method. However, the final version of your program will also have three
+  additional methods that can transform a graphical image, like the method
+  \program{convertImageToGreyScale(BufferedImage sourceImage)}.
+
+\item Note that your program will alternate between printing and computing, as
+  in previous assignments. Specifically, the program's \program{main} method
+  will have a \program{try-catch} block in it that reads in an image and then
+  converts and saves it, producing suitable diagnostic messages as needed.
+
+\item Don't forget to review the assignment sheets from the previous laboratory
+  and practical assignments as they contain insights that will support your
+  completion of this assignment. For instance, you should review how to use
+  \command{println} statements to produce program output.
+
+\end{enumerate}
+
+\section*{Summary of the Required Deliverables}
+
+\noindent Students do not need to submit printed source code or technical
+writing for any assignment in this course. Instead, this assignment invites you
+to submit, using GitHub, the following deliverables.
+
+\begin{enumerate}
+
+  \setlength{\itemsep}{0in}
+
+\item Stored in \reflection{}, a multiple-paragraph reflection on the commands
+  that you typed in the text editor and the terminal window. This Markdown-based
+  document should explain the input, output, and behavior of each command and
+  the challenges that you confronted when using it. For every challenge that you
+  encountered, please explain your solution for it. You should also provide
+  detailed answers to all the other technical questions.
+
+\item A completed version of \mainprogramsource{} that both meets all of the
+  established requirements and produces the desired graphical and textual
+  output. In particular, please recall that this Java program should read a
+  graphical image from the file system, perform three image transformations,
+  save three images on the file system, and display the correct outputs in the
+  terminal window, producing ten total lines of output.
+
+\end{enumerate}
+
+\section*{Evaluation of Your Laboratory Assignment}
+
+Using a report that the instructor shares with you through the commit log in
+GitHub, you will privately received a grade on this assignment and feedback on
+your submitted deliverables. Your grade for the assignment will be a function of
+the whether or not it was submitted in a timely fashion and if your program
+received a green \checkmark{} indicating that it met all of the requirements.
+Other factors will also influence your final grade on the assignment. In
+addition to studying the efficiency and effectiveness and documentation of your
+Java source code, the instructor will also evaluate the correctness of your
+technical writing. If your submission receives a red \naughtmark{}, the
+instructor will reduce your grade for the assignment. Finally, please remember
+to read your GitHub repository's \program{README.md} file for a description of
+the four grades that you will receive for this laboratory assignment.
+
+% \section*{Adhering to the Honor Code}
+
+In adherence to the Honor Code, students should complete this assignment on an
+individual basis. While it is appropriate for students in this class to have
+high-level conversations about the assignment, it is necessary to distinguish
+carefully between the student who discusses the principles underlying a problem
+with others and the student who produces assignments that are identical to, or
+merely variations on, someone else's work. Deliverables (e.g., Java source code
+or Markdown-based technical writing) that are nearly identical to the work of
+others will be taken as evidence of violating the \mbox{Honor Code}. Please see
+the course instructor if you have questions about this policy.
+
+\end{document}
