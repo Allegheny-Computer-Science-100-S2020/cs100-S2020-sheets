@@ -1,0 +1,388 @@
+\documentclass[11pt]{article}
+
+% NOTE: The "Edit" sections are changed for each assignment
+
+% Edit these commands for each assignment
+
+\newcommand{\assignmentduedate}{October 7}
+\newcommand{\assignmentassignedate}{October 4}
+\newcommand{\assignmentnumber}{Five}
+
+\newcommand{\labyear}{2019}
+\newcommand{\labdueday}{Monday}
+\newcommand{\labassignday}{Friday}
+\newcommand{\labtime}{1:30 pm}
+
+\newcommand{\assigneddate}{Assigned: \labassignday, \assignmentassignedate, \labyear{} at \labtime{}}
+\newcommand{\duedate}{Due: \labdueday, \assignmentduedate, \labyear{} at \labtime{}}
+
+% Edit these commands to give the name to the main program
+
+\newcommand{\mainprogram}{\lstinline{PerformRedaction}}
+\newcommand{\mainprogramsource}{\lstinline{src/main/java/practicalfive/PerformRedaction.java}}
+
+% Edit this commands to describe key deliverables
+
+\newcommand{\reflection}{\lstinline{writing/reflection.md}}
+
+% Commands to describe key development tasks
+
+% --> Running gatorgrader.sh
+\newcommand{\gatorgraderstart}{\command{gradle grade}}
+\newcommand{\gatorgradercheck}{\command{gradle grade}}
+
+% --> Compiling and running program with gradle
+\newcommand{\gradlebuild}{\command{gradle build}}
+\newcommand{\gradlerun}{\command{gradle run}}
+
+% Commands to describe key git tasks
+
+% NOTE: Could be improved, problems due to nesting
+
+\newcommand{\gitcommitfile}[1]{\command{git commit #1}}
+\newcommand{\gitaddfile}[1]{\command{git add #1}}
+
+\newcommand{\gitadd}{\command{git add}}
+\newcommand{\gitcommit}{\command{git commit}}
+\newcommand{\gitpush}{\command{git push}}
+\newcommand{\gitpull}{\command{git pull}}
+
+\newcommand{\gitcommitmainprogram}{\command{git commit src/main/java/practicalfive/PerformRedaction.java -m "Your
+descriptive commit message"}}
+
+% Use this when displaying a new command
+
+\newcommand{\command}[1]{``\lstinline{#1}''}
+\newcommand{\program}[1]{\lstinline{#1}}
+\newcommand{\url}[1]{\lstinline{#1}}
+\newcommand{\channel}[1]{\lstinline{#1}}
+\newcommand{\option}[1]{``{#1}''}
+\newcommand{\step}[1]{``{#1}''}
+
+\usepackage{pifont}
+\newcommand{\checkmark}{\ding{51}}
+\newcommand{\naughtmark}{\ding{55}}
+
+\usepackage{listings}
+\lstset{
+  basicstyle=\small\ttfamily,
+  columns=flexible,
+  breaklines=true
+}
+
+\usepackage{fancyvrb}
+\usepackage{color}
+
+\usepackage{fancyhdr}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{Computer Science 100}
+\lhead{Practical Assignment \assignmentnumber{}}
+\rfoot{Page \thepage}
+\lfoot{\duedate}
+
+\usepackage{titlesec}
+\titlespacing\section{0pt}{6pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+
+\newcommand{\labtitle}[1]
+{
+  \begin{center}
+    \begin{center}
+      \bf
+      CMPSC 100\\Computational Expression\\
+      Fall 2019\\
+      \medskip
+    \end{center}
+    \bf
+    #1
+  \end{center}
+}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\labtitle{Practical \assignmentnumber{} \\ \assigneddate{} \\ \duedate{}}
+
+\section*{Objectives}
+
+To continue practicing the use of GitHub to access the files for a practical
+assignment. Additionally, to practice using your laptop's operating system and
+software development programs such as Docker Desktop, a terminal window, and a
+text editor. You will continue to practice using Slack to support communication
+with the teaching assistants and the course instructor. Next, you will learn
+more about file input and output, further discovering how the course's automated
+grading tool assesses your progress towards correctly completing the project.
+Finally, you will learn more about how to use string replacement in a Java
+program to ``redact'' text from the input file.
+
+\section*{Suggestions for Success}
+
+\begin{itemize}
+  \setlength{\itemsep}{0pt}
+
+\item {\bf Follow each step carefully}. Slowly read each sentence in the
+  assignment sheet, making sure that you precisely follow each instruction.
+  Take notes about each step that you attempt, recording your questions and
+  ideas and the challenges that you faced. If you are stuck, then please tell a
+  teaching assistant or instructor what assignment step you recently completed.
+
+\item {\bf Regularly ask and answer questions}. Please log into Slack at the
+  start of a laboratory or practical session and then join the appropriate
+  channel. If you have a question about one of the steps in an assignment, then
+  you can post it to the designated channel. Or, you can ask a student sitting
+  next to you or talk with a teaching assistant or the course instructor.
+
+\item {\bf Store your files in GitHub}. As in all of your past assignments, you
+  will be responsible for storing all of your files (e.g., Java source code and
+  Markdown-based writing) in a Git repository using GitHub Classroom. Please
+  verify that you have saved your source code in your Git repository by using
+  \command{git status} to ensure that everything is updated. You can see if
+  your assignment submission meets the established correctness requirements by
+  using the provided checking tools on your local computer and in checking the
+  commits in GitHub.
+
+\item {\bf Keep all of your files}. Don't delete your programs, output files,
+  and written reports after you submit them through GitHub; you will need them
+  again when you study for the quizzes and examinations and work on the other
+  laboratory, practical, and final project assignments.
+
+\item {\bf Explore teamwork and technologies}. While certain aspects of these
+  assignments will be challenging for you, each part is designed to give you the
+  opportunity to learn both fundamental concepts in the field of computer
+  science and explore advanced technologies that are commonly employed at a wide
+  variety of companies. To explore and develop new ideas, you should regularly
+  communicate with your team and/or the student technical leaders.
+
+\item {\bf Hone your technical writing skills}. Computer science assignments
+  require to you write technical documentation and descriptions of your
+  experiences when completing each task. Take extra care to ensure that your
+  writing is interesting and both grammatically and technically correct,
+  remembering that computer scientists must effectively communicate and
+  collaborate with their team members and the tutors, teaching assistants, and
+  course instructor.
+
+\item {\bf Review the Honor Code on the syllabus}. While you may discuss your
+  assignments with others, copying source code or writing is a violation of
+  Allegheny College's Honor Code.
+
+\end{itemize}
+
+\section*{Reading Assignment}
+
+If you have not done so already, please read all of the relevant ``GitHub
+Guides'', available at \url{https://guides.github.com/}, that explain how to use
+many of the features that GitHub provides. In particular, please make sure that
+you have read guides such as ``Mastering Markdown'' and ``Documenting Your
+Projects on GitHub''; each of them will help you to understand how to use both
+GitHub and GitHub Classroom. Focusing on the content about declaring and
+variables and reading from files, you should review Chapters 1 through 3 and
+textbook, paying close attention to the technical content about string
+manipulation through the use of methods like \command{replace}.
+
+\section*{Performing Text Redaction Through String Manipulation}
+
+To access the practical assignment, you should go into the
+\channel{\#announcements} channel in our Slack team and find the announcement
+that provides a link for it. Copy this link and paste it into your web browser.
+Now, you should accept the practical assignment and see that GitHub Classroom
+created a new GitHub repository for you to access the assignment's starting
+materials and to store the completed version of your assignment. Specifically,
+to access your new GitHub repository for this assignment, please click the green
+``Accept'' button and then click the link that is prefaced with the label ``Your
+assignment has been created here''. If you accepted the assignment and correctly
+followed these steps, you should have created a GitHub repository with a name
+like
+``Allegheny-Computer-Science-100-Fall-2019/computer-science-100-fall-2019-practical-5-gkapfham''.
+Unless you provide the instructor with documentation of the extenuating
+circumstances that you are facing, not accepting the assignment means that you
+automatically receive a failing grade for it. Please follow the steps from the
+previous laboratory assignments for finding your ``home base'' for this
+practical assignment; see the instructor if you are stuck on getting started.
+
+Figure~\ref{mad} contains the output from running a program like the one you
+must implement. To ensure that the program produces the correct output, you
+should follow the instructions at all of the \command{TODO} markers, adding the
+needed source code. As you are working on this practical assignment, make sure
+that you study the following source code segment and understand how it writes
+the \command{redactedSentence} variable to the output file. If your program
+works correctly, then you should see that it produces the file
+\program{content/sentence\_output.txt}. If your Java program does not produce
+this file or the file does not have the correct contents, then make sure that
+you talk with the course instructor or a student technical leader to identify
+and fix any mistakes in your source code.
+
+\begin{verbatim}
+    try {
+      PrintWriter out = new PrintWriter("content/sentence_output.txt");
+      out.println(redactedSentence);
+      out.flush();
+      out.close();
+    } catch (FileNotFoundException noFile) {
+      System.out.println("Unable to locate the input file");
+    }
+\end{verbatim}
+
+One potential source of difficulty for this assignment is the behavior of the
+\command{replace} method provided by the \program{java.lang.String} class. If
+the input sentence is stored in a variable called \command{sentence}, then it is
+important to note that the method call \command{sentence.replace("Allegheny",
+"GGGGGGGGG")} returns a new string in which the word \command{Allegheny} is
+``redacted'' by replacing it with the new word \command{GGGGGGGGG}. This
+realization suggests that a correct redaction program requires code like:
+
+\begin{verbatim}
+  String redactedSentence = sentence.replace("Allegheny", "GGGGGGGGG");
+\end{verbatim}
+
+\begin{figure}[tb]
+\begin{Verbatim}[commandchars=\\\{\}]
+  Gregory M. Kapfhammer Fri Oct 04 08:03:13 EDT 2019
+
+  Performing redaction on the following sentence:
+  I am a student enrolled in Computer Science 100 at Allegheny College.
+
+  Redaction created the following sentence:
+  I am a student enrolled in Computer Science 100 at GGGGGGGGG College.
+
+  Thanks for using the redaction program.
+  Have an awesome day.
+\end{Verbatim}
+\vspace*{-.1in}
+\caption{Sample Output from Running \mainprogram.}
+\label{mad}
+\end{figure}
+
+\section*{Checking the Correctness of Your Program and Writing}
+
+As in the past assignments, you are provided with an automated tool for checking
+the quality of your source code. Please note that the practical assignments do
+not require you to produce a writing document as you do in the laboratory
+assignments. However, to check your Java source code you can started with the
+use of GatorGrader, type the command \gatorgraderstart{} in your Docker
+container. If your work does not meet all of the assignment's requirements, then
+you will see output that highlights the mistakes that you made. If you do have
+mistakes in your assignment, then you will need to review GatorGrader's output,
+find the mistake, and try to fix it. Specifically, don't forget to add in the
+required comments and commit to your repository a sufficient number of times!
+Finally, don't forget to ensure that you still transfer all of your source code
+to your GitHub repository. Please see the course instructor if you have
+questions about this important step.
+
+Once your program is building correctly, fulfilling at least some of the
+assignment's requirements, you should transfer your files to GitHub using the
+\gitcommit{} and \gitpush{} commands. For example, if you want to signal that
+the \mainprogramsource{} file has been changed and is ready for transfer to
+GitHub you would first type \gitcommitmainprogram{} in your terminal, followed
+by typing \gitpush{} and checking to see that the transfer to GitHub is
+successful. If you notice that transferring your code to GitHub did not work
+correctly, then please try to determine why, asking a technical leader or the
+course instructor for help, if necessary.
+
+After the course instructor enables \step{continuous integration} with a system
+called Travis CI, when you use the \gitpush{} command to transfer your source
+code to your GitHub repository, Travis CI will initialize a \step{build} of your
+assignment, checking to see if it meets all of the requirements. If both your
+source code and writing meet all of the established requirements, then you will
+see a green \checkmark{} in the listing of commits in GitHub after awhile. If
+your submission does not meet the requirements, a red \naughtmark{} will appear
+instead. The instructor will reduce a student's grade for this assignment if the
+red \naughtmark{} appears on the last commit in GitHub immediately before the
+assignment's due date. Yet, if the green \checkmark{} appears on the last commit
+in your GitHub repository, then you satisfied all of the main checks. Unless you
+provide the course instructor with documentation of the extenuating
+circumstances that you are facing, no late work will be considered towards your
+completion grade for this practical assignment. You should aim to finish
+practical assignments on the day that they are assigned, completing them no
+later than the start of the next classroom session.
+%
+Please see the course instructor with questions about this assignment submission
+policy.
+
+% Give additional suggestions for improvement, adding to the first list
+
+\section*{Additional Success Strategies for the Practical Sessions}
+
+Since this is one of our first practical assignments and you are still learning
+how to use the Java programming language, don't become frustrated if you make a
+mistake. Instead, use your mistakes as an opportunity for learning both about
+the necessary technology and the background and expertise of the other students
+in the class, the technical leaders, and the course instructor.
+
+\vspace*{-.05in}
+\begin{itemize}
+
+\itemsep 0in
+
+\item {\bf Experiment.} Practical sessions are for learning by doing without the
+  pressure of grades or ``right/wrong'' answers. So try things! To learn about
+  file input and output, please carefully experiment with the code, making small
+  incremental changes and observing the output.
+
+\item {\bf Practice Key Laboratory Skills.} As you are completing this
+  assignment, practice using your text editor and the terminal until you can
+  easily use their most important features. If you would like, you can also try
+  out other text editors and advanced terminal commands.
+
+\item {\bf Identify Areas for Improvement.} If you finish this assignment early,
+  please take time to identify the technical tasks that are the most difficult
+  for you to complete without referencing your notes or making a mistake. After
+  you make a list of these tasks, devise some strategies that will enable you to
+  practice them during the completion of upcoming assignments.
+
+\item {\bf Help One Another!} If your neighbor is struggling and you know what
+  to do, offer your help. Don't ``do the work'' for them, but advise them on
+  what to type or how to handle things. If you are stuck on a part of this
+  practical assignment and you could not find any insights in either your
+  textbook or online sources, formulate a question to ask your neighbor, a
+  technical leader, or a course instructor. Try to strike the right balance
+  between asking for help when you cannot solve a problem and working
+  independently to find a solution.
+
+\end{itemize}
+
+\section*{Summary of the Required Deliverables}
+
+\noindent Students do not need to submit printed source code or technical
+writing for any assignment in this course. Instead, this assignment invites you
+to submit, using GitHub, the following deliverables. Because this is a practical
+assignment, you are not required to complete any technical writing.
+
+\begin{enumerate}
+
+\setlength{\itemsep}{0in}
+
+\item A correct version of \mainprogramsource{} that meets all of the
+  established source code requirements and produces the desired text-based
+  output. Please make sure that this program writes the correct redacted file to
+  the \program{content/} directory.
+
+\end{enumerate}
+
+\section*{Evaluation of Your Practical Assignment}
+
+Practical assignments are graded on a completion --- or ``checkmark'' --- basis.
+If your GitHub repository has a \checkmark{} for the last commit before the
+deadline then you will receive the highest possible grade for the assignment.
+However, you will fail the assignment if you do not complete it correctly, as
+evidenced by a red \naughtmark{} in your commit listing, by the set deadline for
+finishing the project.
+
+\section*{Adhering to the Honor Code}
+
+In adherence to the Honor Code, students should complete this assignment on an
+individual basis. While it is appropriate for students in this class to have
+high-level conversations about the assignment, it is necessary to distinguish
+carefully between the student who discusses the principles underlying a problem
+with others and the student who produces assignments that are identical to, or
+merely variations on, someone else's work. Deliverables (e.g., Java source code
+or Markdown-based technical writing) that are nearly identical to the work of
+others will be taken as evidence of violating the \mbox{Honor Code}. Please see
+the course instructor if you have questions about this policy.
+
+\end{document}
