@@ -10,6 +10,7 @@ script:
 - latexmk -pdf -outdir=_build lab04/cs100S2020_lab04.tex
 - latexmk -pdf -outdir=_build lab05/cs100S2020_lab05.tex
 - latexmk -pdf -outdir=_build lab06/cs100S2020_lab06.tex
+- latexmk -pdf -outdir=_build lab07/cs100S2020_lab07.tex
 - latexmk -pdf -outdir=_build practical01/cs100S2020_practical01.tex
 - latexmk -pdf -outdir=_build practical02/cs100S2020_practical02.tex
 - latexmk -pdf -outdir=_build practical03/cs100S2020_practical03.tex
@@ -30,6 +31,7 @@ deploy:
     - _build/cs100S2020_lab04.pdf
     - _build/cs100S2020_lab05.pdf
     - _build/cs100S2020_lab06.pdf
+    - _build/cs100S2020_lab07.pdf
     - _build/cs100S2020_practical01.pdf
     - _build/cs100S2020_practical02.pdf
     - _build/cs100S2020_practical03.pdf
