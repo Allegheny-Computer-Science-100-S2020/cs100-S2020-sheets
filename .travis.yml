@@ -19,7 +19,7 @@ script:
 - latexmk -pdf -outdir=_build practical05/cs100S2020_practical05.tex
 - latexmk -pdf -outdir=_build practical06/cs100S2020_practical06.tex
 - latexmk -pdf -outdir=_build practical07/cs100S2020_practical07.tex
-- latexmk -pdf -outdir=_build practical07/cs100S2020_practical08.tex
+- latexmk -pdf -outdir=_build practical08/cs100S2020_practical08.tex
 - latexmk -pdf -outdir=_build quiz01/cs100S2020_studyguide_quiz01.tex
 - latexmk -pdf -outdir=_build exam01/cs100S2020_studyguide_exam01.tex
 deploy:
