@@ -22,6 +22,7 @@ script:
 - latexmk -pdf -outdir=_build practical08/cs100S2020_practical08.tex
 - latexmk -pdf -outdir=_build quiz01/cs100S2020_studyguide_quiz01.tex
 - latexmk -pdf -outdir=_build exam01/cs100S2020_studyguide_exam01.tex
+- latexmk -pdf -outdir=_build exam01/cs100S2020_studyguide_exam02.tex
 deploy:
   provider: releases
   api_key:
@@ -45,6 +46,7 @@ deploy:
     - _build/cs100S2020_practical08.pdf
     - _build/cs100S2020_studyguide_quiz01.pdf
     - _build/cs100S2020_studyguide_exam01.pdf
+    - _build/cs100S2020_studyguide_exam02.pdf
   skip_cleanup: true
   on:
     tags: true
